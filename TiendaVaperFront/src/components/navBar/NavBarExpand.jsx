@@ -5,13 +5,12 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import './NavBarExpand.css'
 
 function NavBarExpand() {
   return (
     <>
       {/* {[false, 'sm', 'md', 'lg', 'xl', 'xxl'].map((expand) => ( */}
-        <Navbar key={'sm'} expand="sm" variant='dark' className="bg-body-tertiary mb-3 fixed-top modo-oscuro">
+        <Navbar key={'sm'} expand="sm" variant='dark' className="bg-dark mb-3 fixed-top modo-oscuro">
           <Container fluid>
             <Navbar.Brand href="#">Car Wash</Navbar.Brand>
             <Navbar.Toggle aria-controls="offcanvasNavbar-expand-sm" />
@@ -53,7 +52,6 @@ function NavBarExpand() {
             </Navbar.Offcanvas>
           </Container>
         </Navbar>
-      )
     </>
   );
 }

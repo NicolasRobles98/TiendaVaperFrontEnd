@@ -1,14 +1,25 @@
 // import Dashboard from './components/dashboard/DashBoard'
-import NavBarExpand from './components/navBar/NavBarExpand';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Dashboard from './components/dashboard/DashBoard';
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Product from './components/productPage/Product';
 
 
 function App() {
 
+  const router = createBrowserRouter ([
+    {
+      path : "/",
+      element : <Dashboard/>
+    },
+    {
+      path : "/product",
+      element : <Product/>
+    },
+
+  ])
   return (
-    <>
-      <NavBarExpand/>
-    </>
+    <RouterProvider router={router} />
   )
 }
 
