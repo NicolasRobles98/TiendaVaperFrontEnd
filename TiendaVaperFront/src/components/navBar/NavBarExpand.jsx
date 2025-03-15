@@ -6,13 +6,23 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
-function NavBarExpand() {
+import { useNavigate } from "react-router-dom";
+
+const NavBarExpand = () => {
+
+  const navigate = useNavigate();
+
+
+  const handleNavigateMenu = (event)=> {
+    const route = event.currentTarget.getAttribute("value");
+    navigate(route)
+  }
   return (
     <>
       {/* {[false, 'sm', 'md', 'lg', 'xl', 'xxl'].map((expand) => ( */}
         <Navbar key={'sm'} expand="sm" variant='dark' className="bg-dark mb-3 fixed-top modo-oscuro">
           <Container fluid>
-            <Navbar.Brand href="#">Car Wash</Navbar.Brand>
+            <Navbar.Brand value ="/" onClick={handleNavigateMenu}>Car Wash</Navbar.Brand>
             <Navbar.Toggle aria-controls="offcanvasNavbar-expand-sm" />
             <Navbar.Offcanvas
               id="offcanvasNavbar-expand-sm" 
@@ -26,13 +36,13 @@ function NavBarExpand() {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-start flex-grow-1 pe-3">
-                  <Nav.Link href="#action1">Inicio</Nav.Link>
-                  <Nav.Link href="#action2">Contáctanos</Nav.Link>
+                  <Nav.Link value ="/" onClick={handleNavigateMenu}>Inicio</Nav.Link>
+                  <Nav.Link href="#action2" value ="/contactanos">Contáctanos</Nav.Link>
                   <NavDropdown
                     title="Tienda"
                     id="offcanvasNavbar-expand-sm" 
                   >
-                    <NavDropdown.Item href="#action3">Productos</NavDropdown.Item>
+                    <NavDropdown.Item value="/product" onClick={handleNavigateMenu}>Productos</NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item href="#action4">
                       Mis compras

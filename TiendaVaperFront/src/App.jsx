@@ -1,8 +1,7 @@
-// import Dashboard from './components/dashboard/DashBoard'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Dashboard from './components/dashboard/DashBoard';
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Product from './components/productPage/Product';
+import Products from './components/products/Products';
 
 
 function App() {
@@ -14,7 +13,7 @@ function App() {
     },
     {
       path : "/product",
-      element : <Product/>
+      element : <Products/>
     },
 
   ])

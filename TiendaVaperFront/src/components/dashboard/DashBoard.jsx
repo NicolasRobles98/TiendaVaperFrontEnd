@@ -3,7 +3,15 @@ import Button from "react-bootstrap/esm/Button";
 import Carousel from 'react-bootstrap/Carousel';
 import "./carousel.css"
 
+import { useNavigate } from "react-router-dom";
+
 const Dashboard = () => {
+  const navigate = useNavigate();
+
+  const handleNavigateMenu = (event)=> {
+    const route = event.currentTarget.getAttribute("value");
+    navigate(route)
+  }
   return (
 
     <div id="dashboard-container">
@@ -34,7 +42,7 @@ const Dashboard = () => {
             <Carousel.Caption className="carousel-caption">
               <h1 className="text-white">Tienda para autos</h1>
               <h4 className="text-white">Lavame</h4>
-              <Button variant="outline-light">
+              <Button variant="outline-light" value= "/product" onClick={handleNavigateMenu}>
                 Ingresar
               </Button>
             </Carousel.Caption>
