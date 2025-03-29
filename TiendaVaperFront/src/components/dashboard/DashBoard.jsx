@@ -1,14 +1,21 @@
 import NavBarExpand from "../navBar/NavBarExpand";
 import Button from "react-bootstrap/esm/Button";
 import Carousel from 'react-bootstrap/Carousel';
+import Fade from 'react-bootstrap/Fade';
 import "./carousel.css"
 
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
 
-  const handleNavigateMenu = (event)=> {
+  useEffect(() =>{
+    setOpen(true)
+  }, []);
+
+  const handleNavigateMenu = (event) => {
     const route = event.currentTarget.getAttribute("value");
     navigate(route)
   }
@@ -18,16 +25,20 @@ const Dashboard = () => {
       <header style={{ width: "100vw", height: "100%" }}>
         <NavBarExpand />
       </header>
-      <div className="d-flex flex-column justify-content-center align-items-center vh-40 text-center" style={{
-        backgroundImage: "linear-gradient(to bottom,rgb(33, 37, 41),rgb(255, 135, 70))",
-        height: "75vh",
-      }}>
-        <h1 className="text-white">Tienda para autos</h1>
-        <h4 className="text-white">Lavame</h4>
-        <Button variant="outline-light">
-          Ingresar
-        </Button>
-      </div>
+      <Fade in={open}>
+        <div className="d-flex flex-column justify-content-center align-items-center vh-40 text-center" style={{
+          backgroundImage: "linear-gradient(to bottom,rgb(33, 37, 41),rgb(255, 135, 70))",
+          height: "75vh",
+          transition: "opacity 0.5s ease-in-out" //Transicion
+        }}>
+          <h1 className="text-white">Tienda para autos</h1>
+          <h4 className="text-white">Lavame</h4>
+          <Button variant="outline-light">
+            Ingresar
+          </Button>
+        </div>
+      </Fade>
+
       <div>
         <Carousel data-bs-theme="dark">
           <Carousel.Item>
@@ -37,12 +48,11 @@ const Dashboard = () => {
               alt="First slide"
               style={{ filter: "brightness(50%)" }}
             />
-              
+
 
             <Carousel.Caption className="carousel-caption">
               <h1 className="text-white">Tienda para autos</h1>
-              <h4 className="text-white">Lavame</h4>
-              <Button variant="outline-light" value= "/product" onClick={handleNavigateMenu}>
+              <Button variant="outline-light" value="/product" onClick={handleNavigateMenu}>
                 Ingresar
               </Button>
             </Carousel.Caption>

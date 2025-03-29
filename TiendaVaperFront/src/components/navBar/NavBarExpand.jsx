@@ -31,7 +31,7 @@ const NavBarExpand = () => {
             >
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title id="offcanvasNavbar-expand-sm" >
-                  Offcanvas
+                  Car Wash
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
@@ -41,6 +41,7 @@ const NavBarExpand = () => {
                   <NavDropdown
                     title="Tienda"
                     id="offcanvasNavbar-expand-sm" 
+                    data-bs-theme="dark"
                   >
                     <NavDropdown.Item value="/product" onClick={handleNavigateMenu}>Productos</NavDropdown.Item>
                     <NavDropdown.Divider />
@@ -55,6 +56,7 @@ const NavBarExpand = () => {
                     placeholder="Search"
                     className="me-2"
                     aria-label="Search"
+                    data-bs-theme="dark"
                   />
                   <Button variant="outline-light">Buscar</Button>
                 </Form>

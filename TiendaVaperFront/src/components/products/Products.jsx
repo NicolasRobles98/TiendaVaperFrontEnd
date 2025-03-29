@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import NavBarExpand from "../navBar/NavBarExpand";
 import ProductItem from "../productItem/ProductItem";
+import FilterMenu from "../FilterMenu/FilterMenu";
 
 const Products = () => {
     const [products, setProducts] = useState([])
     useEffect(() => {
         fetch("https://localhost:7099/api/Product/GetAll", {
             headers: {
+                method : "GET",
                 accept: "application/json",
                 // "Authorization" :`Bearer ${user.token}`
             }
@@ -27,7 +29,7 @@ const Products = () => {
             .catch((error) => {
                 console.error(error);
             })
-    })
+    }, []);
 
     const productsMappedToShow = products
         .map(produItem => (<ProductItem
@@ -42,7 +44,12 @@ const Products = () => {
     return (
         <>
             <NavBarExpand />
-            <div className="container" style={{paddingTop:"5rem", paddingBottom : "3em"}}>
+            
+            <div style={{paddingTop:"3em", margin : "1.5em"}}>
+                <FilterMenu/>
+            </div>
+
+            <div className="container">
                 <div className="d-flex justify-content-center row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 gap-4 ">
                     {productsMappedToShow}
                 </div>
