@@ -4,6 +4,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Products from './components/products/Products';
 import ProductPage from './components/productPage/ProductPage'
 import Login from './components/login/Login';
+import { AuthContextProvider } from './service/authContext/AuthContext';
 
 
 function App() {
@@ -28,7 +29,9 @@ function App() {
 
   ])
   return (
-    <RouterProvider router={router} />
+    <AuthContextProvider>
+          <RouterProvider router={router} />
+    </AuthContextProvider>
   )
 }
 
